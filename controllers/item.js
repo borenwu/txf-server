@@ -1,4 +1,3 @@
-const async = require("async");
 const {mysql} = require ('../qcloud')
 
 async function add (ctx, next) {

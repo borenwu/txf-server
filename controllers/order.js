@@ -26,14 +26,15 @@ async function add (ctx, next) {
 			const orders = await mysql ('orders')
 				.where ('id', id)
 				.select ('*')
-			orders[0].open_date = monment(order.open_date).format('YYYY-MM-DD')
-			orders[0].close_date = monment(order.close_date).format('YYYY-MM-DD')
+			orders[0].open_date = monment(orders[0].open_date).format('YYYY-MM-DD')
+			orders[0].close_date = monment(orders[0].close_date).format('YYYY-MM-DD')
 			ctx.state.data = {
 				id: id[0],
 				order:orders[0],
 				msg: 'success'
 			}
 		} catch (e) {
+			console.log(e)
 			ctx.state = {
 				code: -1,
 				data: {
